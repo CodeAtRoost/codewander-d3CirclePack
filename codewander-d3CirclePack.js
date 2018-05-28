@@ -15,6 +15,7 @@ define( ["qlik", "text!./codewander-d3CirclePack.ng.html", "css!./codewander-d3C
 					}]
 				}
 			},
+			
 			definition: {
 				type: "items",
 				component: "accordion",
@@ -22,13 +23,54 @@ define( ["qlik", "text!./codewander-d3CirclePack.ng.html", "css!./codewander-d3C
 					dimensions: {
 						uses: "dimensions",
 						min: 1,
-						max: 3
+						max: 3,
+						items:{
+							fillColor:{
+								type:"string",
+								label:"Fill Color",
+								ref: "qDef.fillColor",
+								expression:"never",
+								defaultValue:"#EBF2EA"								
+							}
+							
+						}
 					},
 					measures: {
 						uses: "measures",
 						min: 1,
-						max: 1
+						max: 1,
+						items:{
+							fillColor:{
+								type:"string",
+								label:"Fill Color",
+								ref: "qAttributeExpressions.0.qExpression",
+								expression:"always",
+								defaultValue:"='#80ADD7'"								
+							}
+							
+						}
 					},
+					settings: {
+						uses: "settings",
+						items:{
+							BackgroundColor:{
+								type:"string",
+								label:"Background Color",
+								ref: "bgColor",
+								expression:"never",
+								defaultValue:"#EBF2EA"								
+							},
+							OuterCircleColor:{
+								type:"string",
+								label:"Outer Circle Color",
+								ref: "outercircleColor",
+								expression:"never",
+								defaultValue:"#D4DCA9"								
+							}
+							
+						}
+					},
+					
 					sorting: {
 						uses: "sorting"
 					}
@@ -41,10 +83,14 @@ define( ["qlik", "text!./codewander-d3CirclePack.ng.html", "css!./codewander-d3C
 			},
 			paint: function () {
 				$('#svg').empty();
+				var layoutColor= this.$scope.layout.bgColor? this.$scope.layout.bgColor: "#F2EAED";
+				var outercircleColor=this.$scope.layout.outercircleColor? this.$scope.layout.outercircleColor:"#A4A4BF";
 				var d=this.$scope.layout.qHyperCube.qPivotDataPages[0];
 				console.log(d);
 				var chart_data=convert(d);
-				render(this.$element,chart_data,d3);			
+				var self=this;
+				//this.backendApi.selectValues(1, ["Central"], true);
+				render(this.$element,chart_data,d3,this.$scope.layout.qHyperCube.qDimensionInfo,layoutColor,outercircleColor,this,qlik);			
 				
 				//needed for export
 				this.$scope.selections = [];			
