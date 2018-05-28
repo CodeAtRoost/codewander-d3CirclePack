@@ -1,5 +1,5 @@
-define( ["qlik", "text!./codewander-d3CirclePack.ng.html", "css!./codewander-d3CirclePack.css","//d3js.org/d3.v4.min.js","./lib/js/render"],
-	function ( qlik, template,lcss,d3,renderFn ) {
+define( ["qlik", "text!./codewander-d3CirclePack.ng.html", "css!./codewander-d3CirclePack.css","./lib/js/d3.v4.min","./lib/js/render"],
+	function ( qlik, template,lcss,d3lib,renderFn ) {
 		"use strict";
 		return {
 			template: template,
@@ -90,7 +90,7 @@ define( ["qlik", "text!./codewander-d3CirclePack.ng.html", "css!./codewander-d3C
 				var chart_data=convert(d);
 				var self=this;
 				//this.backendApi.selectValues(1, ["Central"], true);
-				render(this.$element,chart_data,d3,this.$scope.layout.qHyperCube.qDimensionInfo,layoutColor,outercircleColor,this,qlik);			
+				render(this.$element,chart_data,d3lib,this.$scope.layout.qHyperCube.qDimensionInfo,layoutColor,outercircleColor,this,qlik);			
 				
 				//needed for export
 				this.$scope.selections = [];			
