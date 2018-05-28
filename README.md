@@ -7,7 +7,8 @@ This Qlik sense extension D3 Circle pack is adapted from the <a href="https://bl
  	<li>It simplifies the navigation by easily moving up or down the hierarchical structure with the zoom feature.</li>
 </ul>
 <h1>Download and Install</h1>
-Donwload the latest version here
+<a href="https://github.com/CodeAtRoost/codewander-d3CirclePack/archive/1.0.zip" target="_blank"> Donwload the latest version here</a>
+
 
 Install the extension in your desktop or server.
 
