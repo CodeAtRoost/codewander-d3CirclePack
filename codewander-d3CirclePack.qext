@@ -1,7 +1,7 @@
 {
 	"name": "codewander-d3CirclePack",
 	"description": "Chart visualization template",
-	"icon": "bar-chart-horizontal",
+	"icon": "scatter-chart",
 	"type": "visualization",
 	"version": "1.0.0",
 	"author": "",
