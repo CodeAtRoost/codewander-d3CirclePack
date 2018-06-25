@@ -102,22 +102,12 @@ define( ["qlik", "text!./codewander-d3CirclePack.ng.html", "css!./codewander-d3C
 				};
 
 				$scope.selections = [];
-
-				$scope.sel = function ( $event ) {
-					if ( $event.currentTarget.hasAttribute( "data-row" ) ) {
-						var row = parseInt( $event.currentTarget.getAttribute( "data-row" ), 10 ), dim = 0,
-							cell = $scope.$parent.layout.qHyperCube.qDataPages[0].qMatrix[row][0];
-						if ( cell.qIsNull !== true ) {
-							cell.qState = (cell.qState === "S" ? "O" : "S");
-							if ( $scope.selections.indexOf( cell.qElemNumber ) === -1 ) {
-								$scope.selections.push( cell.qElemNumber );
-							} else {
-								$scope.selections.splice( $scope.selections.indexOf( cell.qElemNumber ), 1 );
-							}
-							$scope.selectValues( dim, [cell.qElemNumber], true );
-						}
-					}
-				};
+				$scope.makeSelection= function(){
+					$scope.selectValues(selectedData.dimIndex, selectedData.value,false);
+				}
+				
+				
+				
 			}]
 		};
 
